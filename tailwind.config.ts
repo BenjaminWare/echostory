@@ -9,6 +9,10 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+		gridTemplateColumns: {
+			"1fr-100px-50px":"1fr 100px 50px"
+
+		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

@@ -32,7 +32,7 @@ export default function CreateDocumentButton(props:{variant?:"outline" | "link" 
           if (res_id == id) {
             router.push(`/document/${id}`)
           } else {
-            setError("Error: Creating Document")
+            setError("Error: Creating Story")
             setLoading(false)
             
           }
@@ -45,7 +45,7 @@ export default function CreateDocumentButton(props:{variant?:"outline" | "link" 
 
   return (
     <div className='relative flex flex-col items-center'>
-    <LoadingButton className={`${variant === 'link' ? 'text-white' : ''} w-48 ${error ? 'error-jiggle' : ''}`}  variant={variant} loading={loading} onClick={handleClick}>Create Document</LoadingButton>
+    <LoadingButton className={`${variant === 'link' ? 'text-white' : ''} w-48 ${error ? 'error-jiggle' : ''}`}  variant={variant} loading={loading} onClick={handleClick}>Create Story</LoadingButton>
     {error && <div className='absolute bottom-[-6px] translate-y-full w-48  m-1 text-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10'>{error}</div>}
     </div>
   )

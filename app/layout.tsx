@@ -32,13 +32,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
+      <html lang="en" className="notranslate" translate="no">
+        <ClerkProvider>
+
         <body className={`overflow-x-hidden bg-[var(--seasalt)]`}>
           <Navbar />
           <div className="">{children}</div>
         </body>
+        </ClerkProvider>
+
       </html>
-    </ClerkProvider>
   )
 }

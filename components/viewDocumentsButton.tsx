@@ -44,7 +44,7 @@ export default function ViewDocumentsButton(props:{variant?:"outline" | "link" |
 
   return (
     <div className='relative flex flex-col items-center'>
-    <LoadingButton className={`${variant==='link' ? ' text-white' : '' } w-48 ${error ? 'error-jiggle' : ''}`}  variant={variant} loading={loading} onClick={handleClick}>View Documents</LoadingButton>
+    <LoadingButton className={`${variant==='link' ? ' text-white' : '' } w-48 ${error ? 'error-jiggle' : ''}`}  variant={variant} loading={loading} onClick={handleClick}>View Stories</LoadingButton>
     {error && <div className='absolute bottom-[-6px] translate-y-full w-48  m-1 text-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10'>{error}</div>}
     </div>
   )
