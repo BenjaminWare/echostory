@@ -6,6 +6,8 @@ import getDocument from "@/api/getDocument";
 import updateDocument from "@/api/updateDocument";
 import { LoaderCircle } from 'lucide-react';
 import TitleEditor from "./titleEditor";
+import SimilarReader from "./SimilarReader";
+
 export default async function Page({
     params,
   }: {
@@ -20,9 +22,13 @@ export default async function Page({
 
   // TODO this page should be able to split between the page currently being editted and the most similiar ones
     return (
+      <div className="flex transition-all">
         <div className='mx-auto max-w-[800px]'>
             <TitleEditor id={doc.id} title={doc.title}/>
             <TextEditor id={doc.id} text={doc.text} title={doc.title} />
         </div>
+            <SimilarReader id={id}/>
+      </div>
+
     )
   }

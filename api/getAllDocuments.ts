@@ -2,9 +2,13 @@
 
 import { StoryDocument, StoryDocumentMetaData } from "@/utils/types"
 import { tursoClient } from "../utils/tursoClient"
+import { currentUser, User } from "@clerk/nextjs/server"
 
-export default async function getDocument(user_id:string): Promise<StoryDocumentMetaData[] | null>{
+export default async function getAllDocuments(): Promise<StoryDocumentMetaData[] | null>{
+
       try {
+    const {id:user_id} = await currentUser() as User
+
       let {rows} = await tursoClient().execute({sql:"SELECT id,title,created_at,user_id FROM document where user_id = ?",args:[user_id]})
       
       const obj:  StoryDocumentMetaData[] = []

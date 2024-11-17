@@ -7,7 +7,7 @@ import updateDocument from "@/api/updateDocument"
 import { StoryDocument } from "@/utils/types"
 import { LoaderCircle } from 'lucide-react';
 import { useUser } from "@clerk/nextjs"
-export default function TextEditor(props: {id:string,title:string,text:string}) {
+export default function TextEditor(props: {id:string,title:string,text?:string}) {
     const {id,title,text} = props
     const wrapperRef:MutableRefObject<null | HTMLDivElement> = useRef(null)
 
@@ -21,7 +21,7 @@ export default function TextEditor(props: {id:string,title:string,text:string}) 
         const editor = document.createElement("div")
         wrapperRef.current.append(editor)
         const quill = new Quill(editor, {theme: 'snow'}) // This line causes a 500 that doesn't seem to do anything, it says the document is not defined though to me it seems like it always is
-        quill.setContents(JSON.parse(text))
+        quill.setContents(JSON.parse(text ? text : "Loading..."))
         let timeout:any
         quill.on("text-change",(delta,oldContent,source) => {
             if (source === 'user') {
@@ -32,7 +32,7 @@ export default function TextEditor(props: {id:string,title:string,text:string}) 
                 let contents  = quill.getContents()
 
                 timeout = setTimeout(async () => {
-                    const res = await updateDocument(id,title,JSON.stringify(contents));
+                    const res = await updateDocument(id,JSON.stringify(contents));
                     if (res != id) {
                         setError(true)
                     } else {
